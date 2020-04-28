@@ -1,20 +1,6 @@
 #include "lists.h"
 #include <stdlib.h>
 
-listint_t *create_node(int number)
-{
-	listint_t *new_node;
-
-	new_node = malloc(sizeof(listint_t));
-	if (new_node == NULL)
-		return (NULL);
-
-	new_node->n = number;
-	new_node->next = NULL;
-
-	return (new_node);
-}
-
 /**
  * add_nodeint - Adds a new node at the beginning of a listint_t list
  * @head: Head of the list
@@ -72,7 +58,6 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		if (i + 1 == (int) idx)
 		{
 			new->next = (*head)->next;
-
 			(*head)->next = new;
 
 			return (new);
@@ -89,8 +74,11 @@ listint_t *insert_node(listint_t **head, int number)
 	listint_t *current;
 	int index;
 
-	if (head == NULL || *head == NULL)
+	if (head == NULL)
 		return (NULL);
+
+	if (*head == NULL)
+		return (add_nodeint(head, number));
 
 	current = *head;
 	if (current->n >= number)

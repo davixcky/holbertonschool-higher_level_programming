@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 from calculator_1 import add, sub, mul, div
-import sys
+from sys import argv
 
-argv = sys.argv[1:]
+argv = argv[1:]
 argc = len(argv)
 
 if __name__ == "__main__":

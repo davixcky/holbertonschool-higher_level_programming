@@ -6,20 +6,6 @@ argv = sys.argv[1:]
 argc = len(argv)
 
 
-def controller(a, b, op):
-    if op == '+':
-        return add(a, b)
-    elif op == '-':
-        return sub(a, b)
-    elif op == '*':
-        return mul(a, b)
-    elif op == '/':
-        return div(a, b)
-    else:
-        print('unknown operator. available operators: +, -, * and /')
-        exit(1)
-
-
 if __name__ == "__main__":
     if argc != 3:
         print('Usage: ./100-my_calculator.py <a> <operator> <b>')
@@ -30,5 +16,16 @@ if __name__ == "__main__":
 
     op = argv[1]
 
-    res = controller(a, b, op)
+    if op == '+':
+        res = add(a, b)
+    elif op == '-':
+        res = sub(a, b)
+    elif op == '*':
+        res = mul(a, b)
+    elif op == '/':
+        res = div(a, b)
+    else:
+        print('unknown operator. available operators: +, -, * and /')
+        exit(1)
+
     print('{} {} {} = {}'.format(a, op, b, res))

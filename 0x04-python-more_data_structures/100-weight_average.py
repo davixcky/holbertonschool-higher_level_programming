@@ -13,4 +13,3 @@ def weight_average(my_list=[]):
         res_sum += t_list[1]
 
     return prod / res_sum
-

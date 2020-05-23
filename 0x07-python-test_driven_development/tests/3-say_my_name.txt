@@ -5,22 +5,32 @@ Using ``say_my_name`` function
 -------------------
 
 Importing the function from the module:
-    >>> say_my_name = __import__('3-say_my_name').say_my_name
+   	 >>> say_my_name = __import__('3-say_my_name').say_my_name
 
 Basic test:
-    >>> say_my_name("John", "Smith")
-    My name is John Smith
+	 >>> say_my_name("John", "Smith")
+    	 My name is John Smith
 
 Non string argument:
-    >>> say_my_name("Walter", [1, 2])
-    Traceback (most recent call last):
-    ...
-    TypeError: last_name must be a string
+    	 >>> say_my_name("Walter", [1, 2])
+    	 Traceback (most recent call last):
+    	 ...
+   	 TypeError: last_name must be a string
 
 Non string argument:
-    >>> say_my_name("Walter")
-    My name is Walter 
+         >>> say_my_name("Walter")
+    	 My name is Walter 
 
+Missing one argumet:
+	 >>> say_my_name('David')
+	 My name is David 
+
+Missing argumets:
+	 >>> say_my_name()
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+	 
 Module docstring:
 	 >>> m = __import__("3-say_my_name").__doc__
 	 >>> len(m) > 1
@@ -28,5 +38,5 @@ Module docstring:
 
 Function docstring:
 	 >>> f = __import__("3-say_my_name").say_my_name.__doc__
-     >>> len(f) > 1
-     True
+     	 >>> len(f) > 1
+     	 True

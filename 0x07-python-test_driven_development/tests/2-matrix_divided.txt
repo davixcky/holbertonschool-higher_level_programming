@@ -26,6 +26,18 @@ All the elements in matrix are not a list:
 	...
 	TypeError: matrix must be a matrix (list of lists) of integers/floats
 
+List len are not equal:
+     	 >>> matrix_divided([[1, 2, 3], [3, 2]], 12)
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: Each row of the matrix must have the same size
+
+List have string values:
+     	 >>> matrix_divided([[1, "2"], ["3", 4]], 12)
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: matrix must be a matrix (list of lists) of integers/floats
+
 Div is a string:
        	 >>> matrix_divided([[1, 2, 3], [4, 5, 6]], "12")
        	 Traceback (most recent call last):

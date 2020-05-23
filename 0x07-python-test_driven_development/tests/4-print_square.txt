@@ -38,7 +38,12 @@ Size is less than zero:
 	...
     ValueError: size must be >= 0
 
-
+Non argument:
+    >>> print_square()
+    Traceback (most recent call last):
+    ...
+    TypeError: print_square() missing 1 required positional argument: 'size'
+    
 Module docstring:
 	 >>> m = __import__("4-print_square").__doc__
 	 >>> len(m) > 1

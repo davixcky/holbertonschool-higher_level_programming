@@ -50,6 +50,10 @@ Div is equal to 0:
     	 ...
 	 ZeroDivisionError: division by zero
 
+Div is equal to infinite float:
+         >>> matrix_divided([[1, 2], [2, 1]], float('inf'))
+	 [[0.0, 0.0], [0.0, 0.0]]
+
 Missing argumets:
 	 >>> matrix_divided()
 	 Traceback (most recent call last):

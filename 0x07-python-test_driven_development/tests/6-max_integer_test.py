@@ -30,5 +30,8 @@ class TestMaxInteger(unittest.TestCase):
         with self.assertRaises(TypeError):
             max_integer(["Hello holberton", 12])
 
+    def test_one_element(self):
+        self.assertIs(max_integer([1]), 1)
+
 if __name__ == '__main__':
     unittest.main()

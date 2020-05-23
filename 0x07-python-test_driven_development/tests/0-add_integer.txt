@@ -41,6 +41,12 @@ Passed NaN:
 	 ...
 	 ValueError: cannot convert float NaN to integer
 
+Infinite number:
+	 >>> add_integer(1, float('inf'))
+	 Tracebak (most recent call last):
+	 ...
+	 OverflowError: cannot convert float infinity to integer
+
 Non-number with number:
 	 >>> add_integer([1], 2)
 	 Traceback (most recent call last):

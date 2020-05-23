@@ -43,12 +43,24 @@ Div is a string:
        	 Traceback (most recent call last):
          ...
          TypeError: div must be a number
-
+	 
 Div is equal to 0:
        	 >>> matrix_divided([[1, 2, 3], [4, 5, 6]], 0)
     	 Traceback (most recent call last):
     	 ...
 	 ZeroDivisionError: division by zero
+
+Missing argumets:
+	 >>> matrix_divided()
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+Missing one argumet:
+	 >>> matrix_divided([1,2])
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: matrix_divided() missing 1 required positional argument: 'div'
 
 Module docstring:
 	 >>> m = __import__("2-matrix_divided").__doc__

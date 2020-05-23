@@ -59,6 +59,10 @@ Checking number with non-number:
 	 ...
 	 TypeError: b must be an integer
 
+One argument:
+	 >>> add_integer(1)
+	 99
+
 Non arguments:
 	 >>> add_integer()
 	 Traceback (most recent call last):

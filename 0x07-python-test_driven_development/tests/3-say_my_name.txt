@@ -21,9 +21,11 @@ Non string argument:
          >>> say_my_name("Walter")
     	 My name is Walter 
 
-Missing one argumet:
-	 >>> say_my_name('David')
-	 My name is David 
+First argument is not a string:
+	 >>> say_my_name(123)
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: first_name must be a string
 
 Missing argumets:
 	 >>> say_my_name()

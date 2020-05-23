@@ -20,23 +20,23 @@ An element in matrix is not a list:
 	TypeError: matrix must be a matrix (list of lists) of integers/floats
 
 All the elements in matrix are not a list:
-	>>> matrix = [1, 2, 3, 4]
+    	>>> matrix = [1, 2, 3, 4]
 	>>> matrix_divided(matrix, 3)
 	Traceback (most recent call last):
 	...
 	TypeError: matrix must be a matrix (list of lists) of integers/floats
 
 Div is a string:
-    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], "12")
-	 Traceback (most recent call last):
+       	 >>> matrix_divided([[1, 2, 3], [4, 5, 6]], "12")
+       	 Traceback (most recent call last):
          ...
          TypeError: div must be a number
 
 Div is equal to 0:
-    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], 0)
-    Traceback (most recent call last):
-    ...
-	ZeroDivisionError: division by zero
+       	 >>> matrix_divided([[1, 2, 3], [4, 5, 6]], 0)
+    	 Traceback (most recent call last):
+    	 ...
+	 ZeroDivisionError: division by zero
 
 Module docstring:
 	 >>> m = __import__("2-matrix_divided").__doc__
@@ -45,6 +45,6 @@ Module docstring:
 
 Function docstring:
 	 >>> f = __import__("2-matrix_divided").matrix_divided.__doc__
-     >>> len(f) > 1
-     True
+     	 >>> len(f) > 1
+     	 True
 

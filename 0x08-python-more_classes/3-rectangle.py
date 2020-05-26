@@ -58,4 +58,7 @@ class Rectangle:
     def __str__(self):
         '''Rectangle like a string'''
         w, h = self.__width, self.__height
+        if w == 0 or h == 0:
+            return ''
+
         return '{}{}'.format(('#' * w + '\n') * (h - 1), '#' * w)

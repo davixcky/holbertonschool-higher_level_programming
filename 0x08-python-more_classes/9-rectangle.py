@@ -10,8 +10,8 @@ class Rectangle:
 
     def __init__(self, width=0, height=0):
         '''Constructor'''
-        self.__height = height
-        self.__width = width
+        self.height = height
+        self.width = width
         Rectangle.number_of_instances += 1
 
     def __del__(self):
@@ -75,18 +75,21 @@ class Rectangle:
 
         a_rect1, a_rect2 = rect_1.area(), rect_2.area()
         if a_rect1 == a_rect2:
-            return a_rect1
+            return rect_1
 
         return rect_1 if a_rect1 > a_rect2 else rect_2
 
     @classmethod
     def square(cls, size=0):
         '''Create a square'''
-        return cls(size, size)
+        return (cls(size, size))
 
     def __str__(self):
         '''Rectangle like a string'''
         w, h = self.__width, self.__height
+        if w == 0 or h == 0:
+            return ""
+
         s = self.print_symbol
         return '{}{}'.format((str(s) * w + '\n') * (h - 1), str(s) * w)
 

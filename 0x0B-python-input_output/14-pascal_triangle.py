@@ -4,13 +4,15 @@
 
 def pascal_triangle(n):
     '''Calculate n triangle pascal'''
-    pascal = []
-    for line in range(1, n + 1):
-        r = [1]
+    a = []
+    for i in range(n):
+        a.append([])
+        a[i].append(1)
 
-        for i in range(1, line):
-            r.append(int(r[i - 1] * (line - i) / i))
+        for j in range(1, i):
+            a[i].append(a[i - 1][j - 1] + a[i - 1][j])
 
-        pascal.append(r)
+        if(len(a) > 1):
+            a[i].append(1)
 
-    return pascal if pascal is not [] else [[]]
+    return a

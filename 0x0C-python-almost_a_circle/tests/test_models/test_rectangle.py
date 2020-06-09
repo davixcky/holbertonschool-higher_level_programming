@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """Module for test Rectangle class"""
-import unittest
-import unittest.mock
 import io
-import random
+import unittest.mock
+
 from models import rectangle
+from models.base import Base
 
 
 class TestRectangle(unittest.TestCase):
@@ -24,6 +24,17 @@ class TestRectangle(unittest.TestCase):
         """Constructor has documentation"""
         doc = rectangle.Rectangle.__init__.__doc__
         self.assertGreater(len(doc), 1)
+
+    def test_constructor(self):
+        Base._Base__nb_objects = 0
+        r1 = rectangle.Rectangle(10, 10)
+        r2 = rectangle.Rectangle(2, 3, 4)
+        r3 = rectangle.Rectangle(5, 6, 7, 8, 9)
+        r4 = rectangle.Rectangle(11, 12, 13, 14)
+        self.assertEqual(r1.id, 1)
+        self.assertEqual(r2.id, 2)
+        self.assertEqual(r3.id, 9)
+        self.assertEqual(r4.id, 3)
 
     def test_extra_arguments(self):
         """Pass extra arguments"""
@@ -111,7 +122,7 @@ class TestRectangle(unittest.TestCase):
         """Verify the output of str"""
         rect = rectangle.Rectangle(12, 2)
         str_out = rect.__str__()
-        str_expected = '[Rectangle] (14) 0/0 - 12/2'
+        str_expected = '[Rectangle] (8) 0/0 - 12/2'
         self.assertEqual(str_out, str_expected)
 
         rect2 = rectangle.Rectangle(4, 6, 2, 1, 12)
@@ -122,7 +133,7 @@ class TestRectangle(unittest.TestCase):
         rectangle.Rectangle(4, 6, 2, 1)
         rect3 = rectangle.Rectangle(4, 6, 2, 1)
         str_out = rect3.__str__()
-        str_expected = '[Rectangle] (16) 2/1 - 4/6'
+        str_expected = '[Rectangle] (10) 2/1 - 4/6'
         self.assertEqual(str_out, str_expected)
 
     def test_str_with_arguments(self):
@@ -159,7 +170,7 @@ class TestRectangle(unittest.TestCase):
         x = TestRectangle.get_value(args, 3)
         y = TestRectangle.get_value(args, 4)
 
-        literal = '[Rectangle] ({}) {}/{} - {}/{}'\
+        literal = '[Rectangle] ({}) {}/{} - {}/{}' \
             .format(id_rect, x, y, w, h)
 
         return literal
@@ -168,7 +179,7 @@ class TestRectangle(unittest.TestCase):
         """Update all the possible positions of the rectangle with *args"""
         arguments = [89, 2, 3, 4, 5, 7, 8]
         rect = rectangle.Rectangle(10, 10, 10, 10)
-        self.assertEqual(rect.__str__(), '[Rectangle] (18) 10/10 - 10/10')
+        self.assertEqual(rect.__str__(), '[Rectangle] (12) 10/10 - 10/10')
 
         for i in range(5):
             l2str = TestRectangle.list2str(*arguments[:i + 1])
@@ -181,13 +192,13 @@ class TestRectangle(unittest.TestCase):
     def test_update_kwargs(self):
         """Update all the possible positions of the rectangle with kwargs"""
         rect = rectangle.Rectangle(10, 10, 10, 10)
-        self.assertEqual(rect.__str__(), '[Rectangle] (19) 10/10 - 10/10')
+        self.assertEqual(rect.__str__(), '[Rectangle] (13) 10/10 - 10/10')
 
         rect.update(height=1)
-        self.assertEqual(rect.__str__(), '[Rectangle] (19) 10/10 - 10/1')
+        self.assertEqual(rect.__str__(), '[Rectangle] (13) 10/10 - 10/1')
 
         rect.update(width=1, x=2)
-        self.assertEqual(rect.__str__(), '[Rectangle] (19) 2/10 - 1/1')
+        self.assertEqual(rect.__str__(), '[Rectangle] (13) 2/10 - 1/1')
 
         rect.update(y=1, width=2, x=3, id=89)
         self.assertEqual(rect.__str__(), '[Rectangle] (89) 3/1 - 2/1')

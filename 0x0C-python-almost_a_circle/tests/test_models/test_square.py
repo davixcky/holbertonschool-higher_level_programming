@@ -2,6 +2,7 @@
 """Module for test Square class"""
 import unittest
 from models import square
+from models.base import Base
 
 
 class TestSquare(unittest.TestCase):
@@ -29,10 +30,11 @@ class TestSquare(unittest.TestCase):
 
     def test_constructor(self):
         """Creating multiple objects"""
+        Base._Base__nb_objects = 0
         sq = square.Square(12, 2, 0)
         self.assertEqual(sq.x, 2)
         self.assertEqual(sq.y, 0)
-        self.assertEqual(sq.id, 20)
+        self.assertEqual(sq.id, 1)
         self.assertEqual(sq.width, 12)
         self.assertEqual(sq.width, sq.height)
 

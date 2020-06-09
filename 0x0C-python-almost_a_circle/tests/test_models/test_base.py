@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """Module for test Base class"""
-import unittest
 import json
+import unittest
+
 from models import base
 
 
@@ -73,6 +74,32 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(AttributeError):
             print(b.size)
 
+    def test_class_attributes(self):
+        """Check class attributes"""
+        b = base.Base(1001)
+
+        with self.assertRaises(AttributeError):
+            print(b.nb_objects)
+
+        with self.assertRaises(AttributeError):
+            print(b.__nb_objects)
+
+    def test_simple_string(self):
+        """Simple json string"""
+        d1 = {"id": 9, "width": 5, "height": 6, "x": 7, "y": 8}
+        d2 = {"id": 2, "width": 2, "height": 3, "x": 4, "y": 0}
+        json_s = base.Base.to_json_string([d1, d2])
+
+        self.assertTrue(type(json_s) is str)
+
+        d = json.loads(json_s)
+
+        self.assertEqual(d, [d1, d2])
+
+    def test_dictionary(self):
+        """Test dictionary"""
+        b = base.Base(12)
+
     def test_2_json(self):
         """Static method 2 json"""
         from models.rectangle import Rectangle
@@ -102,6 +129,42 @@ class TestBase(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             base.Base.to_json_string([dictionary], 12)
+
+    def test_empty_to_json_string(self):
+        """Test for passing empty list/ None"""
+
+        json_s = base.Base.to_json_string([])
+
+        self.assertTrue(type(json_s) is str)
+        self.assertEqual(json_s, "[]")
+
+    def test_None_to_json_String(self):
+        json_s = base.Base.to_json_string(None)
+        self.assertTrue(type(json_s) is str)
+        self.assertEqual(json_s, "[]")
+
+    def test_from_json_string(self):
+        """Tests regular from_json_string"""
+
+        json_str = '[{"id": 9, "width": 5, "height": 6, "x": 7, "y": 8}, \
+{"id": 2, "width": 2, "height": 3, "x": 4, "y": 0}]'
+        json_l = base.Base.from_json_string(json_str)
+        self.assertTrue(type(json_l) is list)
+        self.assertEqual(len(json_l), 2)
+        self.assertTrue(type(json_l[0]) is dict)
+        self.assertTrue(type(json_l[1]) is dict)
+        self.assertEqual(json_l[0],
+                         {"id": 9, "width": 5, "height": 6, "x": 7, "y": 8})
+        self.assertEqual(json_l[1],
+                         {"id": 2, "width": 2, "height": 3, "x": 4, "y": 0})
+
+    def test_fjs_empty(self):
+        """Tests from_json_string with an empty string"""
+        self.assertEqual([], base.Base.from_json_string(""))
+
+    def test_fjs_None(self):
+        """Tests from_json_string with an empty string"""
+        self.assertEqual([], base.Base.from_json_string(None))
 
     @staticmethod
     def write_expected(name, contents):

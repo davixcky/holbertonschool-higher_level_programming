@@ -111,7 +111,7 @@ class TestRectangle(unittest.TestCase):
         """Verify the output of str"""
         rect = rectangle.Rectangle(12, 2)
         str_out = rect.__str__()
-        str_expected = '[Rectangle] (12) 0/0 - 12/2'
+        str_expected = '[Rectangle] (14) 0/0 - 12/2'
         self.assertEqual(str_out, str_expected)
 
         rect2 = rectangle.Rectangle(4, 6, 2, 1, 12)
@@ -122,7 +122,7 @@ class TestRectangle(unittest.TestCase):
         rectangle.Rectangle(4, 6, 2, 1)
         rect3 = rectangle.Rectangle(4, 6, 2, 1)
         str_out = rect3.__str__()
-        str_expected = '[Rectangle] (14) 2/1 - 4/6'
+        str_expected = '[Rectangle] (16) 2/1 - 4/6'
         self.assertEqual(str_out, str_expected)
 
     def test_str_with_arguments(self):
@@ -168,7 +168,7 @@ class TestRectangle(unittest.TestCase):
         """Update all the possible positions of the rectangle with *args"""
         arguments = [89, 2, 3, 4, 5, 7, 8]
         rect = rectangle.Rectangle(10, 10, 10, 10)
-        self.assertEqual(rect.__str__(), '[Rectangle] (16) 10/10 - 10/10')
+        self.assertEqual(rect.__str__(), '[Rectangle] (18) 10/10 - 10/10')
 
         for i in range(5):
             l2str = TestRectangle.list2str(*arguments[:i + 1])
@@ -181,13 +181,13 @@ class TestRectangle(unittest.TestCase):
     def test_update_kwargs(self):
         """Update all the possible positions of the rectangle with kwargs"""
         rect = rectangle.Rectangle(10, 10, 10, 10)
-        self.assertEqual(rect.__str__(), '[Rectangle] (17) 10/10 - 10/10')
+        self.assertEqual(rect.__str__(), '[Rectangle] (19) 10/10 - 10/10')
 
         rect.update(height=1)
-        self.assertEqual(rect.__str__(), '[Rectangle] (17) 10/10 - 10/1')
+        self.assertEqual(rect.__str__(), '[Rectangle] (19) 10/10 - 10/1')
 
         rect.update(width=1, x=2)
-        self.assertEqual(rect.__str__(), '[Rectangle] (17) 2/10 - 1/1')
+        self.assertEqual(rect.__str__(), '[Rectangle] (19) 2/10 - 1/1')
 
         rect.update(y=1, width=2, x=3, id=89)
         self.assertEqual(rect.__str__(), '[Rectangle] (89) 3/1 - 2/1')

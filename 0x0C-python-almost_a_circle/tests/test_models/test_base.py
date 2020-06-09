@@ -28,11 +28,29 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError):
             base.Base(12, 12)
 
+        with self.assertRaises(TypeError):
+            base.Base("hello", 12, 34)
+
     def test_generate_multiple_bases(self):
         """Create multiple instances"""
 
-        nb_objects = 0
-        for i in range(10):
+        b1 = base.Base()
+        self.assertEqual(b1.id, 1)
+
+        b2 = base.Base()
+        self.assertEqual(b2.id, 2)
+
+        b3 = base.Base()
+        self.assertEqual(b3.id, 3)
+
+        b4 = base.Base(12)
+        self.assertEqual(b4.id, 12)
+
+        b5 = base.Base()
+        self.assertEqual(b5.id, 4)
+
+        nb_objects = 4
+        for i in range(5, 10):
             # id_base is i if i is even, otherwise None
             id_base = i if i % 2 == 0 else None
 
@@ -135,6 +153,7 @@ class TestBase(unittest.TestCase):
             exp = TestBase.open_json('expected.json')
 
             self.assertEqual(got, exp)
+
 
 if __name__ == '__main__':
     unittest.main()

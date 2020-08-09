@@ -19,8 +19,9 @@ if __name__ == '__main__':
     conn = MySQLdb.connect(**db_setting)
     cur = conn.cursor()
 
-    cur.execute("SELECT * FROM states WHERE name LIKE BINARY '%s' ORDER BY id"
-                % argument)
+    query = "SELECT * FROM states WHERE name LIKE BINARY %s ORDER BY id"
+
+    cur.execute(query, (argument, ))
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)

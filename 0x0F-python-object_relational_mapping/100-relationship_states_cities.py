@@ -16,18 +16,10 @@ if __name__ == '__main__':
     session_m = sessionmaker(bind=engine)
     session = session_m()
 
-    #Write a script that creates the State “California” 
-    #with the City “San Francisco” from the database hbtn_0e_100_usa: 
-    # (100-relationship_states_cities.py)
-    
-    new_state = State()
-    new_state.name = "California"
-
-    new_city = City()
-    new_city.name = "San Francisco"
+    new_state = State(name="California")
+    new_city = City(name="San Francisco")
     new_state.cities.append(new_city)
-
     session.add(new_state)
-
     session.commit()
+
     session.close()

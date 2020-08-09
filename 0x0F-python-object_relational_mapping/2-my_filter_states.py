@@ -19,7 +19,7 @@ if __name__ == '__main__':
     conn = MySQLdb.connect(**db_setting)
     cur = conn.cursor()
 
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id"\
+    query = "SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY id"\
             .format(argument)
 
     cur.execute(query)

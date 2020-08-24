@@ -10,4 +10,4 @@ if __name__ == '__main__':
     response = s.get(url)
     body = response.text
 
-    print(response.headers['X-Request-Id'])
+    print(response.headers.get('X-Request-Id'))

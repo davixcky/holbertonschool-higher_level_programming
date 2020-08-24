@@ -15,5 +15,5 @@ if __name__ == '__main__':
     data = response.json()
     for i in range(10):
         obj = data[i]
-        sha, username = obj['sha'], obj['commit']['author']['name']
-        print('{}: {}'.format(sha, username))
+        print(obj.get('sha'), end=': ')
+        print(obj.get('commit').get('author').get('name'))

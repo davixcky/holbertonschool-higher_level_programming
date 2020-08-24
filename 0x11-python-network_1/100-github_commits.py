@@ -6,7 +6,7 @@ from sys import argv
 
 
 if __name__ == '__main__':
-    user, repo = argv[1:]
+    repo, user = argv[1:]
     url = 'https://api.github.com/repos/{}/{}/commits'.format(user, repo)
 
     s = requests.Session()

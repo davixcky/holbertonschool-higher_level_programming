@@ -12,5 +12,8 @@ if __name__ == '__main__':
     s = requests.Session()
 
     data = {'username': username, 'token': token}
-    response = s.get(url, auth=HTTPBasicAuth(username, token)).json()
-    print(response['id'])
+    response = s.get(url, auth=(username, token)).json()
+    try:
+        print(response['id'])
+    except:
+        print('None')

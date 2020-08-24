@@ -13,6 +13,6 @@ if __name__ == '__main__':
 
     response = s.get(url)
     commits = response.json()[:10]
-    for commit in commits: 
+    for commit in commits:
         print(commit.get('sha'), end=': ')
         print(commit.get('commit').get('author').get('name'))

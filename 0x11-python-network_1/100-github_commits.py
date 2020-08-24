@@ -12,8 +12,7 @@ if __name__ == '__main__':
     s = requests.Session()
 
     response = s.get(url)
-    data = response.json()
-    for i in range(10):
-        obj = data[i]
-        print(obj.get('sha'), end=': ')
-        print(obj.get('commit').get('author').get('name'))
+    commits = response.json()[:10]
+    for commit in commits: 
+        print(commit.get('sha'), end=': ')
+        print(commit.get('commit').get('author').get('name'))

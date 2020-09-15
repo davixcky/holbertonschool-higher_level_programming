@@ -10,4 +10,5 @@ if (process.argv.length < 4) {
     .map(function (number) {
       return parseInt(number);
     });
+  console.log(parsedArr.reverse()[1]);
 }

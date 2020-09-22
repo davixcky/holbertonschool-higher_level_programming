@@ -5,7 +5,7 @@ const fs = require('fs');
 const URL = process.argv[2];
 const filename = process.argv[3];
 
-request(URL, { json: true }, (err, res, body) => {
+request(URL, (err, res, body) => {
   if (err) { return console.log(err); }
 
   fs.writeFile(filename, body, err => {

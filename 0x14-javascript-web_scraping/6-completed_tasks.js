@@ -6,7 +6,10 @@ request(process.argv[2], { json: true }, (err, res, body) => {
 
   const completed = {};
   body.forEach(e => {
-    if (completed[e.userId] === undefined) completed[e.userId] = 0;
+    if (completed[e.userId] === undefined && e.completed) {
+	    completed[e.userId] = 1;
+	    return;
+    }
 
     if (e.completed === true) completed[e.userId] += 1;
   });
